@@ -22,7 +22,18 @@ public class ChatBot {
         int remainder7 = age3 % 7;
 
         System.out.println("Your age is " + (remainder3 * 70 + remainder5 * 21 + remainder7 * 15) % 105 + "," + "that's a good time to start programming!");
+        System.out.println("Now I will prove to you that I can count to any number you want.");
+        int number = Scan.nextInt();
 
+        int limit = 1000;
+        for (int i = 1; i < 1000; i++) {
+            System.out.println(i + "!");
+            if (i == number) {
+                break;
+            }
+
+        }
     }
-
 }
+
+
