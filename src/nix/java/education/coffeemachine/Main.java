@@ -1,5 +1,7 @@
 package nix.java.education.coffeemachine;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("""
@@ -11,5 +13,15 @@ public class Main {
                 Pouring some milk into the cup
                 Ingridients is ready!
                 """);
+        System.out.println("Write how many cup of coffee you will need:");
+        Scanner scanner = new Scanner(System.in);
+        int cupsOfCoffee = scanner.nextInt();
+        final int water = 200;
+        final int milk = 50;
+        final int coffeeBeams = 15;
+        System.out.println("For" + " " + cupsOfCoffee + " " + "coffee you will need:");
+        System.out.println(water * cupsOfCoffee + " " + "ml of water");
+        System.out.println(milk * cupsOfCoffee + " " + "ml of milk");
+        System.out.println(coffeeBeams * cupsOfCoffee + " " + "g of coffeeBeams");
     }
 }
