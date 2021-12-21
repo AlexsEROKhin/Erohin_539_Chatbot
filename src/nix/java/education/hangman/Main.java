@@ -35,8 +35,13 @@ public class Main {
             if (health > 0) {
                 System.out.print(secret + "\nВведите букву:");
                 String user = scan.nextLine();
-                someLetters.add(user);
-                health--;
+                if (user.length()>1){
+                    System.out.println("Вы можете ввести только одну букву");
+                    continue;}
+                if(!user.matches("[a-z]")) {
+                    System.out.println("Введите строчную английскую букву, пожалуйста");
+                    continue;
+                }
 
                 if (someLetters.contains(user)) {
                     System.out.println("Эта буква уже угадана");
@@ -58,6 +63,7 @@ public class Main {
                 System.out.println("Вы проиграли!");
                 break;
             }
+
         }
     }
 }
