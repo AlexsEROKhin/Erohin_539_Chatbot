@@ -8,27 +8,30 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Висилица!\nИгра скоро будет доступна...");
-        System.out.print("Угадай слово: ");
-        String answer = scan.nextLine();
-        String word = "java";
-        if (answer.equals(word)) {
-            System.out.println("Вы выжили!");
-        } else {
-            System.out.println("Вы проиграли!");
-
+        while (true){
+            System.out.print("Нажми \"играть\" для начала игры, \"выход\" для выхода: ");
+            String user = scan.nextLine();
+            if (user.equals("играть")){
+                game();
+            }
+            if (user.equals("выход")){
+                break;
+            }
         }
+    }
+    public static void game (){
+        Scanner scan = new Scanner(System.in);
         Random random = new Random();
+        System.out.println("Висилица!");
+
+        ArrayList<String> someLetters = new ArrayList<>();
         String[] words = {"java", "python", "javascript", "kotlin"};
         String variation = words[random.nextInt(words.length)];
-        System.out.print("Раунд 2\nУгадай слово: ");
-        String answer2 = scan.nextLine();
         StringBuffer secret = new StringBuffer(variation);
         char[] symbol = variation.toCharArray();
-
         for (int i = 0; i < symbol.length; i++) {
-            secret.setCharAt(i, '-');
+            secret.setCharAt(i,'-');
         }
-        ArrayList<String> someLetters = new ArrayList<>();
         short health = 8;
         boolean True = true;
         while (True) {
@@ -42,18 +45,20 @@ public class Main {
                     System.out.println("Введите строчную английскую букву, пожалуйста");
                     continue;
                 }
-
-                if (someLetters.contains(user)) {
-                    System.out.println("Эта буква уже угадана");
-                    health--;
-                } else {
-                    for (int i = 0; i < variation.length(); i++) {
-                        if (symbol[i] == user.charAt(0)) {
-                            secret.setCharAt(i, user.charAt(0));
+                if (variation.contains(user)) {
+                    if (someLetters.contains(user)) {
+                        System.out.println("Эта буква уже угадана");
+                    } else {
+                        for (int i = 0; i < variation.length(); i++) {
+                            if (symbol[i] == user.charAt(0)) {
+                                secret.setCharAt(i, user.charAt(0));
+                            }
                         }
                     }
-                }
-                if (secret.toString().equals(variation)) {
+                    if (secret.toString().equals(variation)) {
+                        System.out.println(variation+"\nПоздравляю с победой!!!");
+                        break;
+                    }
                 } else {
                     System.out.println("Этой буквы нет в слове!");
                     health--;
@@ -63,7 +68,6 @@ public class Main {
                 System.out.println("Вы проиграли!");
                 break;
             }
-
         }
     }
 }
