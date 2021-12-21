@@ -37,19 +37,23 @@ public class Main {
                 String user = scan.nextLine();
                 someLetters.add(user);
                 health--;
-                if (variation.contains(user)) {
+
+                if (someLetters.contains(user)) {
+                    System.out.println("Эта буква уже угадана");
+                    health--;
+                } else {
                     for (int i = 0; i < variation.length(); i++) {
                         if (symbol[i] == user.charAt(0)) {
                             secret.setCharAt(i, user.charAt(0));
                         }
                     }
-                    if (secret.toString().equals(variation)) {
-                        System.out.println(variation + "\nПоздравляю с победой!\nУвидимся на следующем этапе!");
-                        break;
-                    }
+                }
+                if (secret.toString().equals(variation)) {
                 } else {
                     System.out.println("Этой буквы нет в слове!");
+                    health--;
                 }
+                someLetters.add(user);
             } else {
                 System.out.println("Вы проиграли!");
                 break;
@@ -57,7 +61,6 @@ public class Main {
         }
     }
 }
-
 
 
 
