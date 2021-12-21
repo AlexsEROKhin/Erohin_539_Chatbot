@@ -15,6 +15,29 @@ public class Main {
                 Pouring some milk into the cup
                 Ingridients is ready!
                 """);
+        while (true) {
+            System.out.println("Write action: buy, fill, take, remaining, exit:");
+            String action = scanner.next();
+            if (action.equals("buy")) {
+                employee.buyCoffee();
+                System.out.println(employee.showIngridients());
 
+            }
+            if (action.equals("fill")) {
+                employee.incIngredients();
+                System.out.println(employee.showIngridients());
+
+            }
+            else if (action.equals("take")) {
+                System.out.println("I gave you " + " " + employee.getMoney());
+                employee.takeMoney();
+            }
+            else  if (action.equals("remaining")){
+                System.out.println(employee.showIngridients());
+            }
+            else  if (action.equals("exit")){
+                break;
+            }
+        }
     }
 }
