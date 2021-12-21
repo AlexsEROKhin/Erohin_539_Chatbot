@@ -8,18 +8,31 @@ public class Matrix {
     public void menu(){
         while (true){
             System.out.println("""
-                    Chose your action
-                    1. Sum of the matrix
-                    2.Multiply matrix by constant
+                    Welcome to the matrix calculator
+                                        1. Sum of the matrix
+                                        2. Multiply matrix by constant
+                                        3. Multiply matrix
+                                        4.Transpose matrix
+                                        5. Determinant of matrix
+                                        6. Inverse matrix
+                                        7. Exit
+                                        Chose your action:
+                    
                     """);
-            String action = scanner.nextLine();
-            if (action.equals("1")){
+            String action = scanner.next();
+            if (action.equals("1")) {
                 sumOfMatrix();
             }
-            if (action.equals("2")){
+            else if (action.equals("2")) {
                 constantMatrix();
             }
-            else {
+            else if (action.equals("3")) {
+                multiplyMatrix();
+            }
+            else  if (action.equals("4")){
+
+            }
+            else  if (action.equals("exit")){
                 break;
             }
         }
@@ -107,5 +120,71 @@ public class Matrix {
             System.out.println();
         }
     }
+    public void multiplyMatrix() {
+        int[] sizeFirstMatrix = new int[2];
+        System.out.print("Enter size of first matrix : ");
+        for (int i = 0; i < 2; i++) {
+            sizeFirstMatrix[i] = scanner.nextInt();
+        }
+        double[][] firstMatrix = new double[sizeFirstMatrix[0]][sizeFirstMatrix[1]];
+        System.out.println("Enter the values of first matrix : ");
+        for (int i = 0; i < sizeFirstMatrix[0]; i++) {
+            for (int j = 0; j < sizeFirstMatrix[1]; j++) {
+                firstMatrix[i][j] = scanner.nextDouble();
+            }
+        }
+        int[] sizeSecondMatrix = new int[2];
+        System.out.print("Enter size of second matrix : ");
+        for (int i = 0; i < 2; i++) {
+            sizeSecondMatrix[i] = scanner.nextInt();
+        }
+        double[][] secondMatrix = new double[sizeSecondMatrix[0]][sizeSecondMatrix[1]];
+        System.out.println("Enter the values of second matrix E: ");
+        for (int i = 0; i < sizeSecondMatrix[0]; i++) {
+            for (int j = 0; j < sizeSecondMatrix[1]; j++) {
+                secondMatrix[i][j] = scanner.nextDouble();
+            }
+        }
 
+        System.out.println("First Matrix: ");
+        for (int i = 0; i < sizeFirstMatrix[0]; i++) {
+            for (int j = 0; j < sizeFirstMatrix[1]; j++) {
+                System.out.print(firstMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Second Matrix: ");
+        for (int i = 0; i < sizeSecondMatrix[0]; i++) {
+            for (int j = 0; j < sizeSecondMatrix[1]; j++) {
+                System.out.print(secondMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        double[][] multiplyMatrix = new double[sizeFirstMatrix[0]][sizeSecondMatrix[1]];
+        for (int m = 0; m < sizeFirstMatrix[0]; m++) {
+            for (int n = 0; n < sizeSecondMatrix[1]; n++) {
+                multiplyMatrix[m][n] = 0;
+            }
+        }
+
+
+
+
+        if (sizeFirstMatrix[1] == sizeSecondMatrix[0]) {
+        System.out.println("Multiply Matrix");
+        for (int v = 0; v < sizeFirstMatrix[0]; v++) {
+            for (int z = 0; z < sizeSecondMatrix[1]; z++) {
+                for (int x = 0; x < sizeFirstMatrix[1]; x++) {
+                    multiplyMatrix[v][z] = multiplyMatrix[v][z] + firstMatrix[v][x] * secondMatrix[x][z];
+                }
+                System.out.print(multiplyMatrix[v][z] + " ");
+            }
+            System.out.println();
+        }
+    } else {
+        System.out.println("ERROR");
+    }
+}
 }
