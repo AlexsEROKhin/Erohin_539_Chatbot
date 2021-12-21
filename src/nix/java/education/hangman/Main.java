@@ -28,6 +28,18 @@ public class Main {
         else{
             System.out.println("Вы проиграли!");
         }
+        char[] symbol = variation.toCharArray();
+        for (int i = 2; i < symbol.length; i++) {
+            symbol[i] = '-';
+        }
+        String secret = String.valueOf(symbol);
+        System.out.print("Раунд 3\nУгадай слово "+secret+ ": ");
+        String answer3 = scan.nextLine();
+        if (variation.equals(answer3)) {
+            System.out.println("Вы выжили!");
+        } else {
+            System.out.println("Вы проиграли!");
+        }
     }
 }
 
